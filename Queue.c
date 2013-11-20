@@ -1,3 +1,5 @@
+#include "Queue.h"
+
 Queue *CreateQueue(void) {
 	Queue *queue = (Queue *)malloc(sizeof(Queue));
 	queue->front = NULL;
