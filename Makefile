@@ -1,4 +1,4 @@
-CCFLAGS = -Wall -pedantic -std=C90
+CCFLAGS = -Wall -pedantic -ansi
 CC = gcc
 
 all: Queue.o customer.o customerDB.o main.o pa5
