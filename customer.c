@@ -15,12 +15,7 @@ customer *customerInit(){
 
 book *bookInit(){
 	book *curr = (book *) malloc(sizeof(book));
-	curr->title = malloc(256*csizeof(char));
-	return curr;
-}
-
-order *OrderInit(){
-	order *curr = (order *) malloc(sizeof(order));
+	curr->title = malloc(256*sizeof(char));
 	return curr;
 }
 

@@ -1,13 +1,13 @@
 #include "customerDB.h"
 
 Node *nodeInit(){
-	Node *curr = (Node) malloc(sizeof(Node));
-	customer = customerInit();
-	return Node;
+	Node *curr = (Node *) malloc(sizeof(Node));
+	curr->customer = customerInit();
+	return curr;
 }
 
 void BSTadd(Node *curr, custDB *DB){
-	Node *ptr =root; 
+	Node *ptr = DB->root; 
 	while(ptr != NULL){
 		if(curr->ID > ptr->ID){
 			ptr = ptr->right;
@@ -18,75 +18,74 @@ void BSTadd(Node *curr, custDB *DB){
 	ptr = curr;
 }
 
-custDB *custDBInit(FILE customerfp){
+custDB *custDBInit(FILE *customerfp){
 	char c;
 	int len =0;
 	custDB *DB = malloc(sizeof(custDB));
 	char *buffer = malloc(sizeof(char));
-	while(customerfp != EOF){
-		//new node is created
+	c = fgetc(customerfp);
+	while(c != EOF){
 		Node *toBeAdded = nodeInit();
-		//buffer is filled with one line from the code
 		while((c = fgetc(customerfp)!= '\n')){
 			buffer = realloc(buffer, len +1);
 			buffer[len++] = c;
 		}
-		//this is terrible
 		int section =0;
 		char *doubleConverter = malloc (sizeof(char)*7);
 		int printi = 0;
-		for(int i =0; i <= len; i++){
-			if(buffer[i] = ' ') continue;
+		int i;
+		for(i =0; i <= len; i++){
+			if(buffer[i] == ' ') continue;
 			if(buffer[i]!='|'){
-				if(section = 0){
+				if(section == 0){
 					toBeAdded->customer->name[printi] = buffer[i];
 					printi++;
 				}
-				if(section = 1){
+				if(section == 1){
 					toBeAdded->customer->custID *= 10;
 					toBeAdded->customer->custID += (int) buffer[i];
 					printi++;
 				}
-				if(section = 2){
-					floatConverter[printi] = (float) buffer[i];
-					print++;
+				if(section == 2){
+					doubleConverter[printi] = (float) buffer[i];
+					printi++;
 				}
-				if(section = 3){
+				if(section == 3){
 					toBeAdded->customer->address[printi] = buffer[i];
-					print++;
+					printi++;
 				}
-				if(section = 4){
+				if(section == 4){
 					toBeAdded->customer->state[printi] = buffer[i];
-					print++;
+					printi++;
 
 				}
-				if(section = 5){
+				if(section == 5){
 					toBeAdded->customer->zip [printi]= buffer[i];
-					printi;
+					printi++;
 				}
 			}
 			else{
-				if(section = 0){
+				if(section == 0){
 					toBeAdded->customer->name[i] = '\0';
 					section++;
 				}
-				if(section = 2){
-					toBeAdded->customer->credit= atof(floatConverter); 
+				if(section == 2){
+					toBeAdded->customer->credit= atof(doubleConverter); 
 					section ++;
 				}
-				if(section = 3){
+				if(section == 3){
 					toBeAdded->customer->address = '\0';
 					section++;
 				}
-				if(section = 4){
+				if(section == 4){
 					toBeAdded->customer->state = '\0';
 					section++;
 				}
-				if(section = 5){
+				if(section == 5){
 					toBeAdded->customer->zip = '\0';
 					section++;
 				}
-				if((section = 1)&&(section= 2)){
+				if(section == 1){
 					section ++;
 				}
 				printi =0;
