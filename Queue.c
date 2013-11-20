@@ -5,12 +5,12 @@ Queue *CreateQueue(void) {
 	return queue;
 }
 
-void enqueue(Queue *queue, Order *order) {
+void enqueue(Queue *queue, void *data) {
 	QNode *node = (QNode *)malloc(sizeof(QNode));
 	if (queue == NULL) {
 		return;
 	}
-	node->order = order;
+	node->data = data;
 	node->next = NULL;
 	if (queue->front == NULL) {
 		queue->front = node;
@@ -21,15 +21,15 @@ void enqueue(Queue *queue, Order *order) {
 	}
 }
 
-Order *dequeue(Queue *queue) {
+void *dequeue(Queue *queue) {
 	QNode *node;
-	Order *order = NULL;
+	void *data = NULL;
 	if (queue == NULL) {
 		return NULL;
 	}
 	node = queue->front;
 	if (node != NULL) {
-		order = node->order;
+		data = node->data;
 		if (queue->back == node) {
 			queue->front = NULL;
 			queue->back = NULL;
@@ -38,15 +38,37 @@ Order *dequeue(Queue *queue) {
 		}
 		free(node);
 	}
-	return order;
+	return data;
+}
+
+void *peek(Queue *queue) {
+	QNode *node;
+	void *data = NULL;
+	if (queue == NULL) {
+		return NULL;
+	}
+	node = queue->front;
+	if (node != NULL) {
+		data = node->data;
+	}
+	return data;
 }
 
 void DestroyQNode(QNode *node) {
+	if (node == NULL) {
+		return;
+	}
 	DestroyQNode(node->next);
+	if (node->data != NULL) {
+		free(node->data);
+	}
 	free(node);
 }
 
 void DestroyQueue(Queue *queue) {
+	if (queue == NULL) {
+		return;
+	}
 	queue->back = NULL;
 	DestroyQNode(queue->front);
 	free(queue);

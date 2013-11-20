@@ -4,7 +4,7 @@
 typedef struct QNode QNode;
 typedef struct Queue Queue;
 struct QNode {
-	Order *order;
+	void *data;
 	QNode *next;
 };
 struct Queue {
@@ -12,7 +12,8 @@ struct Queue {
 	QNode *back;
 };
 Queue *CreateQueue(void);
-void enqueue(Queue *, Order *);
-Order *dequeue(Queue *);
+void enqueue(Queue *, void *);
+void *dequeue(Queue *);
+void *peek(Queue *);
 void DestroyQueue(Queue *);
 #endif
