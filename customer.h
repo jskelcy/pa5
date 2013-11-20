@@ -1,30 +1,31 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct Customer
+typedef struct customer
 {
 	char *name;
-	double credit;
+	float credit;
 	int custID;
+	char *address;
+	char *state;
+	char *zip;
 	Order *orders;
 	Order *fails;
-}Customer;
+}customer;
 
-typedef struct Book
+typedef struct book
 {
 	char *title;
 	float cost;
 	int custID;
 	char *category;
-}Book;
+}book;
 
 
-typedef struct Order{
+typedef struct order{
 	customer *buyer;
 	book *book;
-}Order;
-
-
+}order;
 Customer *customerInit();
 Book *bookInit();
 Order *orderInit(;);

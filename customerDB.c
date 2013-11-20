@@ -40,23 +40,29 @@ custDB *custDBInit(FILE customerfp){
 			if(buffer[i]!='|'){
 				if(section = 0){
 					toBeAdded->customer->name[printi] = buffer[i];
+					printi++;
 				}
 				if(section = 1){
 					toBeAdded->customer->custID *= 10;
 					toBeAdded->customer->custID += (int) buffer[i];
+					printi++;
 				}
 				if(section = 2){
 					floatConverter[printi] = (float) buffer[i];
+					print++;
 				}
 				if(section = 3){
 					toBeAdded->customer->address[printi] = buffer[i];
+					print++;
 				}
 				if(section = 4){
 					toBeAdded->customer->state[printi] = buffer[i];
+					print++;
 
 				}
 				if(section = 5){
 					toBeAdded->customer->zip [printi]= buffer[i];
+					printi;
 				}
 			}
 			else{
@@ -66,6 +72,7 @@ custDB *custDBInit(FILE customerfp){
 				}
 				if(section = 2){
 					toBeAdded->customer->credit= atof(floatConverter); 
+					section ++;
 				}
 				if(section = 3){
 					toBeAdded->customer->address = '\0';
@@ -85,7 +92,7 @@ custDB *custDBInit(FILE customerfp){
 				printi =0;
 			}
 		}
-		toBeAdded->ID= toBeAdded->customer->custID;
+		toBeAdded->ID = toBeAdded->customer->custID;
 		BSTadd(toBeAdded,DB);
 		len =0;
 	}
