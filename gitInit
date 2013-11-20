@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-git init
-git remote add origin git@github.com:jskelcy/pa5.git
-git pull -q origin master
