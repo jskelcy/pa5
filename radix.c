@@ -20,18 +20,14 @@ void dbInsert(DB *DB, customer *curr){
 		if((map%2) == 1){
 			ptr = ptr->child0;
 			map/=2;
-		}
-		if((map%2) ==0){
+		}else{
 			ptr = ptr->child1;
 			map/=2;
 		}
 		if(ptr == NULL){
-		fprintf(stderr,"poop\n");
 			ptr = nodeInit();
-		fprintf(stderr,"%p\n",ptr);	
 		}
 	}
-	printf("meh\n");
 	ptr->data = (void *) curr;
 }
 
