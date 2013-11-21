@@ -26,9 +26,12 @@ void dbInsert(DB *DB, customer *curr){
 			map/=2;
 		}
 		if(ptr == NULL){
+		fprintf(stderr,"poop\n");
 			ptr = nodeInit();
+		fprintf(stderr,"%p\n",ptr);	
 		}
 	}
+	printf("meh\n");
 	ptr->data = (void *) curr;
 }
 
