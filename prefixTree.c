@@ -40,7 +40,7 @@ void insertNode(treeRoot *tree,char *queueName) {
     tree->ptr = tree->root;
 }
 
-void QueueBlobEnqueue(treeRoot *tree, book *order,char *category){
+void QueueEnqueue(treeRoot *tree, book *order,char *category){
     int i;
     if(tree->ptr != tree->root){
         tree->ptr = tree->root;
@@ -69,10 +69,7 @@ void freeBranches(treeNode *curr) {
         free(curr->branches);
     }
     if (curr->data != NULL) {
-        QueueBlob *freeQueueBlob = (QueueBlob *)curr->data;
-        free(freeQueueBlob->Queue1);
-        free(freeQueueBlob->Queue2);
-        free(freeQueueBlob);
+        free(curr->data);
     }
     free(curr);
 }
