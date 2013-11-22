@@ -48,8 +48,8 @@ void QueueEnqueue(treeRoot *tree, book *order,char *category){
     for(i=0; category[i] != '\0'; i++){
         traverse(tree, category[i]); 
     }
-    
-    /*tree->ptr is currently looking at the QueueBlob you want to insert into
+    enqueue(tree->ptr, (void *) order); 
+    /*tree->ptr is currently looking at the Queue you want to insert into
     * you need to do some research to figure the rest of this out*/
 }
 
