@@ -1,15 +1,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct book
+typedef struct book book;
+typedef struct customer customer;
+
+struct book
 {
 	char *title;
 	float cost;
 	int custID;
 	char *category;
-}book;
+};
 
-typedef struct customer
+struct customer
 {
 	char *name;
 	float credit;
@@ -19,7 +22,7 @@ typedef struct customer
 	char *zip;
 	book *orders;
 	book *fails;
-}customer;
+};
 
 
 customer *customerInit();

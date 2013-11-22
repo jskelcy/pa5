@@ -11,7 +11,6 @@ DB *custDBInit(FILE *customerFile){
 		int status = 0;
 		customer *cust = customerInit();
 		c = fgetc(customerFile);
-		printf("this should work\n");
 		while (c != EOF) {
 			int i;
 			printI = 0;

@@ -1,5 +1,12 @@
 #include "Queue.h"
 
+QueueBlob *QueueBlobInit(void){
+	QueueBlob *curr = (QueueBlob *) malloc(sizeof(QueueBlob));
+	curr->Queue1= CreateQueue();
+	curr->Queue2 = CreateQueue();
+	return curr;
+}
+
 Queue *CreateQueue(void) {
 	Queue *queue = (Queue *)malloc(sizeof(Queue));
 	queue->front = NULL;
