@@ -6,6 +6,7 @@ int main(int argc, char* argv[]){
 	FILE *customerfp = fopen(argv[1], "r");
 	DB *custDB;
 	int queueBuilder;
+	int producerStatus;
 	if (customerfp ==NULL){
 		fprintf(stderr,"bro stahhhp\n");
 	}

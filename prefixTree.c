@@ -18,7 +18,7 @@ treeRoot* treeInit() {
 }
 
 void insertNode(treeRoot *tree,char *queueName) {
-    QueueBlob *Blob= QueueBlobInit();
+    Queue *queue= CreateQueue();
     int i;
     for(i=0; queueName[i] != '\0'; i++){
         int index = hash(queueName[i]);
@@ -36,7 +36,7 @@ void insertNode(treeRoot *tree,char *queueName) {
             tree->ptr = tree->ptr->branches[index];
         }
     }
-    tree->ptr->data = (void *) Blob;
+    tree->ptr->data = (void *) queue;
     tree->ptr = tree->root;
 }
 
