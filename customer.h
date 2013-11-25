@@ -20,8 +20,8 @@ struct customer
 	char *address;
 	char *state;
 	char *zip;
-	book *orders;
-	book *fails;
+	linkedList *orders;
+	linkedList *fails;
 };
 
 
