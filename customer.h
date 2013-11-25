@@ -20,6 +20,7 @@ struct customer
 	char *address;
 	char *state;
 	char *zip;
+	pthread_mutex_t lock;
 	linkedList *orders;
 	linkedList *fails;
 };

@@ -8,6 +8,7 @@ customer *customerInit(){
 	curr->address = malloc(256*sizeof(char));
 	curr->state = malloc(256*sizeof(char));
 	curr->zip =malloc(256*sizeof(char));
+	curr->lock = pthread_mutex_init();
 	curr->credit =0;
 	curr->custID =0;
 	return curr;
