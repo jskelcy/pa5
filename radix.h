@@ -1,4 +1,4 @@
-#include "customer.h"
+#include <stdlib.h>
 
 typedef struct radixNode radixNode;
 typedef struct DB DB;
@@ -17,5 +17,5 @@ struct DB
 
 radixNode *radixNodeInit();
 DB *dbInit();
-void dbInsert(DB* DB,customer *curr);
-customer *dbGetCustomer(DB *DB,int custID);
+void dbInsert(DB* DB,void *data, int map);
+void *dbGet(DB *DB,int ID);

@@ -13,35 +13,31 @@ DB *dbInit(){
 }
 
 
-void dbInsert(DB *DB, customer *curr){
-    int map = curr->custID;
+void dbInsert(DB *DB, void *data, int map){
     radixNode *ptr = DB->root;
     while(map != 0){
-        if((map%2) == 1){
+        if((map%2) == 0){
             ptr = ptr->child0;
-            map/=2;
-        }else{
+        } else {
             ptr = ptr->child1;
-            map/=2;
         }
+        map/=2;
         if(ptr == NULL){
             ptr = radixNodeInit();
         }
     }
-    ptr->data = (void *) curr;
+    ptr->data = data;
 }
 
-void *dbGet(DB *DB, int custID){
+void *dbGet(DB *DB, int ID){
     radixNode *ptr = DB->root;
-    while((custID !=0) && (ptr != NULL)){
-        if((custID%2) == 1){
-            ptr = ptr->child1;
-            custID/=2;
-        }
-        if((custID%2) ==0){
+    while(ID !=0 && ptr != NULL){
+        if((ID%2) == 0){
             ptr = ptr->child0;
-            custID/=2;
+        } else {
+            ptr = ptr->child1;
         }
+        ID/=2;
     }
     return ptr->data;
 }
