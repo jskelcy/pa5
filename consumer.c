@@ -1,13 +1,10 @@
+#include "consumer.h"
 
-void checkQueue(Queue *queue){
 
-}
-
-customer *getCutsomer(DB *customerDB,int custID){
-	/*this needs to be some kind of mutex locking thing the the customer object*/
-}
 
 void processOrder(customer *customer, book *order){
+	/*not sure if this is how this works*/
+	pthread_mutex_lock(&customer.lock);
 	if(customer.credit > order.cost){
 		customer.cost -= order.cost;
 		LLinsert(customer.orders, order);
@@ -15,4 +12,5 @@ void processOrder(customer *customer, book *order){
 	else{
 		LLinsert(customer.fails, orders);
 	}
+	pthread_mutex_unlock(&customer.lock);
 }

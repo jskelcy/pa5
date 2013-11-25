@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
 		fprintf(stderr,"bro stahhhp\n");
 	}
 	/*all the customers are stored here(radix tree)*/
-	custDB = custDBInit(customerfp);
+	custDB = custDBBuild(customerfp);
 	/*all the queues are stored here(prefix tree)*/
 	queueDB = treeInit();
 

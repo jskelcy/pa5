@@ -40,7 +40,7 @@ void insertNode(treeRoot *tree,char *queueName) {
     tree->ptr = tree->root;
 }
 
-void QueueEnqueue(treeRoot *tree, book *order,char *category){
+void QueueDBEnqueue(treeRoot *tree, book *order,char *category){
     int i;
     if(tree->ptr != tree->root){
         tree->ptr = tree->root;

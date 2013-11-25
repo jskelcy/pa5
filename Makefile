@@ -1,13 +1,16 @@
-CCFLAGS = -Wall -pedantic -ansi -g
+CCFLAGS = -Wall -pedantic -ansi -g -lpthread
 CC = gcc
 
 all: Queue.o customer.o customerDB.o main.o radix.o prefixTree.o pa5
 
-pa5: main.o Queue.o customer.o customerDB.o radix.o prefixTree.o
-	${CC} ${CCFLAGS} -o pa5 main.o customer.o customerDB.o Queue.o radix.o prefixTree.o
+pa5: main.o Queue.o customer.o customerDB.o radix.o prefixTree.o linkedList.o
+	${CC} ${CCFLAGS} -o pa5 main.o customer.o customerDB.o Queue.o radix.o prefixTree.o inkedList.o
 
 main.o: main.c
 	${CC} ${CCFLAGS} -c main.c
+
+linkedList.o: linkedList.c
+	${CC} ${CCFLAGS} -c linkedList.c
 
 customer.o: customer.c
 	${CC} ${CCFLAGS} -c customer.c

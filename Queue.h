@@ -12,6 +12,7 @@ struct QNode {
 struct Queue {
 	QNode *front;
 	QNode *back;
+	/*this needs to have a mutex in it*/
 };
 Queue *CreateQueue(void);
 void enqueue(Queue *, void *);

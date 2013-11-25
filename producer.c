@@ -56,7 +56,7 @@ book *getNewOrders(FILE *orderFile, treeRoot *queueDB, int producerStatus){
 			}
 			status =0;
 			/*this method isnt finished, not sure who mutex will work here1*/
-			QueueEnqueue(queueDB, newBook, newBook->category);
+			QueueDBEnqueue(queueDB, newBook, newBook->category);
 		}
 		int producerStatus++;
 	}

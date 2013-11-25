@@ -2,7 +2,7 @@
 
 
 
-DB *custDBInit(FILE *customerFile){
+DB *custDBBuild(FILE *customerFile){
 	DB *database = dbInit();
 	if (customerFile != NULL) {
 		char c;
