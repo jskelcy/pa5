@@ -15,10 +15,6 @@ DB *custDBBuild(FILE *customerFile){
             int i;
             printI = 0;
             for( i = 0; status <=5; i++){
-                if(c == ' '){
-                    c = fgetc(customerFile);
-                    continue;
-                }
                 if((c !='|') && (c != '\n') && (c != EOF)){
                     switch (status){
                         case 0:
@@ -26,10 +22,18 @@ DB *custDBBuild(FILE *customerFile){
                             printI++;
                             break;
                         case 1:
+                            if(c == ' '){
+                                c = fgetc(customerFile);
+                                continue;
+                            }
                             cust->custID*= 10;
                             cust->custID += atoi(&c);
                             break;
                         case 2:
+                            if (c == ' '){
+                                c = fgetc(customerFile);
+                                continue;
+                            }
                             floatBuffer[printI] = c;
                             printI++;
                             break;
@@ -82,6 +86,7 @@ DB *custDBBuild(FILE *customerFile){
                 }
                 c = fgetc(customerFile);
             }
+            printf("about to insert [%s]\n", cust->name);
             dbInsert(database, cust);
             status = 0;
         }

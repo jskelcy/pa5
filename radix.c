@@ -31,17 +31,17 @@ void dbInsert(DB *DB, customer *curr){
     ptr->data = (void *) curr;
 }
 
-customer *dbGetCustomer(DB *DB, int custID){
+void *dbGet(DB *DB, int custID){
     radixNode *ptr = DB->root;
-    while(custID !=0){
+    while((custID !=0) && (ptr != NULL)){
         if((custID%2) == 1){
-            ptr = ptr->child0;
-            custID/=2;
-        }
-        if((custID%2) ==0){
             ptr = ptr->child1;
             custID/=2;
         }
+        if((custID%2) ==0){
+            ptr = ptr->child0;
+            custID/=2;
+        }
     }
-    return (customer *)ptr->data;
+    return ptr->data;
 }
