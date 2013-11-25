@@ -1,3 +1,3 @@
 #include "radix.h"
 
-DB *custDBInit(FILE *);
+DB *custDBBuild(FILE *);

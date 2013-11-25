@@ -40,17 +40,15 @@ void insertNode(treeRoot *tree,char *queueName) {
     tree->ptr = tree->root;
 }
 
-void QueueDBEnqueue(treeRoot *tree, book *order,char *category){
+void QueueDBEnqueue(treeRoot *tree,book *order,char *category){
     int i;
     if(tree->ptr != tree->root){
         tree->ptr = tree->root;
     }
     for(i=0; category[i] != '\0'; i++){
-        traverse(tree, category[i]); 
+        traverse(tree, category[i]);
     }
-    enqueue(tree->ptr, (void *) order); 
-    /*tree->ptr is currently looking at the Queue you want to insert into
-    * you need to do some research to figure the rest of this out*/
+    enqueue((Queue *)tree->ptr->data, (void *) order);
 }
 
 void traverse(treeRoot *tree, char c){

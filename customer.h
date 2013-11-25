@@ -1,17 +1,8 @@
 #include "linkedList.h"
 #include <stdio.h>
+#include <pthread.h>
 
-typedef struct book book;
 typedef struct customer customer;
-
-struct book
-{
-	char *title;
-	float cost;
-	int custID;
-	char *category;
-};
-
 struct customer
 {
 	char *name;
@@ -27,4 +18,3 @@ struct customer
 
 
 customer *customerInit();
-book *bookInit();

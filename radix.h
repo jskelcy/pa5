@@ -1,21 +1,21 @@
 #include "customer.h"
 
-typedef struct Node Node;
+typedef struct radixNode radixNode;
 typedef struct DB DB;
 
-struct Node
+struct radixNode
 {
 	void *data;
-	Node *child0;
-	Node *child1;
+	radixNode *child0;
+	radixNode *child1;
 };
 
 struct DB
 {
-	Node *root;
+    radixNode *root;
 };
 
-Node *nodeInit();
+radixNode *radixNodeInit();
 DB *dbInit();
 void dbInsert(DB* DB,customer *curr);
 customer *dbGetCustomer(DB *DB,int custID);

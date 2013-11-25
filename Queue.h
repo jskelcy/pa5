@@ -1,6 +1,8 @@
 #ifndef __Queue_h__
 #define __Queue_h__
-#include "customerDB.h"
+#include <stdlib.h>
+#include <stdio.h>
+
 typedef struct QNode QNode;
 typedef struct Queue Queue;
 
